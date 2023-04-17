@@ -6,6 +6,12 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Model or entity that maps the database data to the privilege table
+ *
+ * @author Daniel Caicedo
+ * @since 1.0.0
+ */
 @Builder
 @Getter
 @Setter
@@ -19,6 +25,7 @@ public class Privilege {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
     @ManyToMany(

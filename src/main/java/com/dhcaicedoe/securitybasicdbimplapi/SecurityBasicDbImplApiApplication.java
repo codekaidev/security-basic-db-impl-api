@@ -54,12 +54,19 @@ public class SecurityBasicDbImplApiApplication {
 			adminRole = roleService.createRole(adminRole);
 			userRole = roleService.createRole(userRole);
 
+
+
 			User user1 = User
 					.builder()
 					.firstName("Juan")
 					.lastName("Lopez")
 					.email("jlopez@correo.com")
+					.username("jlopez")
 					.password(passwordEncoder.encode("password"))
+					.isAccountNonExpired(true)
+					.isAccountNonLocked(true)
+					.isCredentialsNonExpired(true)
+					.isEnabled(true)
 					.roles(Collections.singletonList(adminRole))
 					.build();
 
@@ -68,7 +75,12 @@ public class SecurityBasicDbImplApiApplication {
 					.firstName("Pedro")
 					.lastName("Torres")
 					.email("ptorres@correo.com")
+					.username("ptorres")
 					.password(passwordEncoder.encode("password"))
+					.isAccountNonExpired(true)
+					.isAccountNonLocked(true)
+					.isCredentialsNonExpired(true)
+					.isEnabled(true)
 					.roles(Collections.singletonList(userRole))
 					.build();
 
@@ -77,7 +89,12 @@ public class SecurityBasicDbImplApiApplication {
 					.firstName("Pablo")
 					.lastName("Gomez")
 					.email("pgomez@correo.com")
+					.username("pgomez")
 					.password(passwordEncoder.encode("password"))
+					.isAccountNonExpired(true)
+					.isAccountNonLocked(true)
+					.isCredentialsNonExpired(true)
+					.isEnabled(true)
 					.roles(Arrays.asList(adminRole, userRole))
 					.build();
 

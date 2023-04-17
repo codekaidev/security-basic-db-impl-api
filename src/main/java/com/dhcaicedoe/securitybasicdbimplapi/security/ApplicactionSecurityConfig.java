@@ -16,9 +16,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
-import static com.dhcaicedoe.securitybasicdbimplapi.security.ApplicationUserRole.ADMIN;
-import static com.dhcaicedoe.securitybasicdbimplapi.security.ApplicationUserRole.USER;
-
 /**
  * Allows you to configure the security of the application
  *
@@ -62,9 +59,9 @@ public class ApplicactionSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/v1/auth/**")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/api/**/demo/user").hasAnyRole(USER.name(), ADMIN.name())
+                .antMatchers(HttpMethod.GET, "/api/**/demo/user").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/**/demo/admin").hasAnyAuthority("PRIVILEGE_WRITE_DEMO")
-                .antMatchers(HttpMethod.GET, "/api/**/demo/admin").hasAnyRole(ADMIN.name())
+                .antMatchers(HttpMethod.GET, "/api/**/demo/admin").hasAnyRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
